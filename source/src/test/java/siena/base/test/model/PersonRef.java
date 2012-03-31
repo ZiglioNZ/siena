@@ -9,6 +9,7 @@ public class PersonRef extends Model{
 	public long id;
 	
 	public PersonUUID personUUID;
+	public PersonLongAutoID personlongautoid;
 	
 	public PersonRef(){
 		super();

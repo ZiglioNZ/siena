@@ -578,6 +578,21 @@ public abstract class BaseTest extends TestCase {
 
 		assertEquals(personref, personref2);
 	}
+
+	public void testFilterOperatorInForLongAutoIDReference() {
+		PersonRef personref = new PersonRef();
+		personref.personlongautoid = LongAutoID_TESLA;
+		pm.insert(personref);
+
+		PersonRef personref2 = pm.createQuery(PersonRef.class)
+//				.filter("personUUID IN", l )
+				.filter("personlongautoid IN", Arrays.asList( LongAutoID_TESLA.id, LongAutoID_CURIE.id))
+				.get();
+
+		assertNotNull(personref2);
+
+		assertEquals(personref, personref2);
+	}
 	
 	public void testFilterOperatorLessThan() {
 		List<PersonUUID> people = pm.createQuery(PersonUUID.class).filter("n<", 3).order("n").fetch();

@@ -918,12 +918,18 @@ public class GaeTest extends BaseTest {
 		super.testFilterOperatorInForStringID();
 	}
 
-	@Override
-	public void testFilterOperatorInForUUIDReference() {
-		// TODO Auto-generated method stub
-		super.testFilterOperatorInForUUIDReference();
-	}
+//	@Override
+//	public void testFilterOperatorInForUUIDReference() {
+//		// TODO Auto-generated method stub
+//		super.testFilterOperatorInForUUIDReference();
+//	}
 
+	@Override
+	public void testFilterOperatorInForLongAutoIDReference() {
+		// TODO Auto-generated method stub
+		super.testFilterOperatorInForLongAutoIDReference();
+	}
+	
 	@Override
 	public void testFilterOperatorLessThan() {
 		// TODO Auto-generated method stub

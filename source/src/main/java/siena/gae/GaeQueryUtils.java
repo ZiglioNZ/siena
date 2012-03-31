@@ -84,8 +84,11 @@ public class GaeQueryUtils {
 					Key key = GaeMappingUtils.getKey(value);
 					q.addFilter(propertyName, op, key);
 				} else {
+					if( ClassInfo.isModel( f.getDeclaringClass()) )
+						f = ClassInfo.getIdField(f.getDeclaringClass());
 					if (ClassInfo.isId(f)) {
 						Id id = f.getAnnotation(Id.class);
+							
 						switch(id.value()) {
 						case NONE:
 							if(value != null){
