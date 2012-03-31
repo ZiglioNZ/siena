@@ -919,6 +919,12 @@ public class GaeTest extends BaseTest {
 	}
 
 	@Override
+	public void testFilterOperatorInForUUIDReference() {
+		// TODO Auto-generated method stub
+		super.testFilterOperatorInForUUIDReference();
+	}
+
+	@Override
 	public void testFilterOperatorLessThan() {
 		// TODO Auto-generated method stub
 		super.testFilterOperatorLessThan();

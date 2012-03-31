@@ -50,6 +50,7 @@ import siena.base.test.model.EmbeddedSubModel;
 import siena.base.test.model.MultipleKeys;
 import siena.base.test.model.PersonLongAutoID;
 import siena.base.test.model.PersonLongManualID;
+import siena.base.test.model.PersonRef;
 import siena.base.test.model.PersonStringAutoIncID;
 import siena.base.test.model.PersonStringID;
 import siena.base.test.model.PersonUUID;
@@ -559,6 +560,23 @@ public abstract class BaseTest extends TestCase {
 
 		assertEquals(StringID_CURIE, people.get(0));
 		assertEquals(StringID_TESLA, people.get(1));
+	}
+
+	public void testFilterOperatorInForUUIDReference() {
+		List<PersonUUID> l = getOrderedPersonUUIDs();
+
+		PersonRef personref = new PersonRef();
+		personref.personUUID = l.get(0);
+		pm.insert(personref);
+
+		PersonRef personref2 = pm.createQuery(PersonRef.class)
+//				.filter("personUUID IN", l )
+				.filter("personUUID IN", Arrays.asList( l.get(0).id, l.get(1).id))
+				.get();
+
+		assertNotNull(personref2);
+
+		assertEquals(personref, personref2);
 	}
 	
 	public void testFilterOperatorLessThan() {
